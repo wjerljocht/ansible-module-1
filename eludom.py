@@ -7,7 +7,7 @@ fields = '''
         required: yes
         type: str
     bar:
-        required: no
+#       required: no
         type: dict
 '''
 fields = yaml.load(fields)
@@ -18,4 +18,5 @@ ansible = AnsibleModule(argument_spec=fields)
 #    if value:
 #        ansible.params[key] = value.upper()
 msg=ansible.params
+msg['fokke'] = 'sukke'
 ansible.exit_json(msg=msg)

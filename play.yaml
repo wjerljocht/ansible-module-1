@@ -2,6 +2,11 @@
 -   hosts: localhost
     connection: local
     gather_facts: no
+    vars_prompt:
+        -   name: passwd
+            prompt: password
+            private: yes
+#           failed_when: '{{ passwd|length }}'
     vars:
         param:
             drip: drop
@@ -20,6 +25,8 @@
             3762313939303433390a663630623664666234366234376364303737633535333539333834373639
             6437
     tasks:
+        -   debug:
+                var: passwd
         -   debug:
                 var: username
         -   debug:
